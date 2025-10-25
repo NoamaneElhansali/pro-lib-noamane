@@ -28,13 +28,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*tmp;
 
 	int (i), (j);
+	if (!s1)
+		return (NULL);
 	i = 0;
-	if (!s1[i] && set[i])
-	{
-		ptr = malloc(1);
-		*ptr = '\0';
-		return (ptr);
-	}
 	while (*(s1 + i) && ft_is_set((char)*(s1 + i), (char *)set))
 		i++;
 	j = ft_strlen((char *)s1) - 1;

@@ -33,10 +33,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	while (*(s1 + i) && ft_is_set((char)*(s1 + i), (char *)set))
 		i++;
-	j = ft_strlen((char *)s1) - 1;
+	j = ft_strlen(s1) - 1;
 	while (*(s1 + j) && ft_is_set((char)*(s1 + j), (char *)set))
 		j--;
 	ptr = malloc((j - i + 2) * sizeof(char));
+	if (!ptr)
+		return (NULL);
 	tmp = ptr;
 	while (i <= j)
 		*ptr++ = *(s1 + i++);

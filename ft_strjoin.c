@@ -19,9 +19,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int (len_s1), (len_s2);
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	len_s1 = ft_strlen((char *)s1);
-	len_s2 = ft_strlen((char *)s2);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
 	ptr = malloc((len_s2 + len_s1 + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
 	tmp = ptr;
 	while (*s1)
 		*ptr++ = (char)*s1++;

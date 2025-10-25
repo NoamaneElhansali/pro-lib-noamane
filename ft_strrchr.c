@@ -15,14 +15,12 @@ char	*ft_strrchr(const char *s, int c)
 {
 	const char	*end;
 
-	if (*s == '\0')
-		return ((char *)s);
 	end = s;
 	while (*end)
 		end++;
 	while (end != s)
 	{
-		if (*end == c)
+		if (*end == (unsigned char)c)
 			return ((char *)end);
 		end--;
 	}

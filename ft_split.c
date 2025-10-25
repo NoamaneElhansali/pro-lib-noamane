@@ -37,16 +37,22 @@ char	*ft_get_word(char *start, char *end)
 	return (ft_substr(start, 0, end - start));
 }
 
+static void	ft_free_split(char **split, int i)
+{
+	while (--i >= 0)
+		free(split[i]);
+	free(split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	const char	*tmp;
 	char		**ptr;
+	int			i;
 
-	int (len_s), (i);
 	if (!s)
 		return (NULL);
-	len_s = ft_count_word((char *)s, c);
-	ptr = malloc((len_s + 1) * sizeof(char *));
+	ptr = malloc((ft_count_word((char *)s, c) + 1) * sizeof(char *));
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -59,6 +65,8 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (s > tmp)
 			ptr[i++] = ft_get_word((char *)tmp, (char *)s);
+		if (!ptr[i - 1])
+			return (ft_free_split(ptr, i - 1), NULL);
 	}
 	ptr[i] = NULL;
 	return (ptr);

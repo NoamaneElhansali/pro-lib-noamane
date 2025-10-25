@@ -32,10 +32,11 @@ void	ft_putnbr_fd(int n, int fd)
 
 	c = n;
 	if (c < 0)
-		c = -c;
-	len = ft_numlen(n);
-	if (c < 0)
+	{
 		num[0] = '-';
+		c = -c;
+	}
+	len = ft_numlen(c);
 	num[len--] = '\0';
 	if (c == 0)
 		num[len--] = '0';

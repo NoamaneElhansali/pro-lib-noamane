@@ -16,6 +16,8 @@ int	ft_numlen(long int a)
 	int	len;
 
 	len = (a <= 0);
+	if (a < 0)
+		a = -a;
 	while (a > 0)
 	{
 		a /= 10;
@@ -31,13 +33,13 @@ void	ft_putnbr_fd(int n, int fd)
 	char		num[15];
 
 	c = n;
+	len = ft_numlen(c);
+	num[len--] = '\0';
 	if (c < 0)
 	{
 		num[0] = '-';
 		c = -c;
 	}
-	len = ft_numlen(c);
-	num[len--] = '\0';
 	if (c == 0)
 		num[len--] = '0';
 	while (c > 0)
